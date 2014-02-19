@@ -35,7 +35,7 @@ mkdir -p build/{BUILD,BUILDROOT,SRPMS,RPMS,SOURCES,SPECS}
 
 cp *.spec build/SPECS
 cp *.tgz *.ks scripts/build-eustore-tarball.sh IMAGE-LICENSE \
-	euca-install-load-balancer build/SOURCES
+	euca-install-image-worker build/SOURCES
 
 SPECFILE=$(echo -n build/SPECS/*.spec)
 
@@ -48,7 +48,7 @@ insert_global $SPECFILE build_version $BUILD_VERSION
 [ "$1" = "devel" ] && insert_global $SPECFILE devbuild 1
 
 rpmbuild --define "_topdir `pwd`/build" \
-    -ba build/SPECS/eucalyptus-load-balancer-image.spec || exit 1
+    -ba build/SPECS/eucalyptus-imaging-worker-image.spec || exit 1
 
 mkdir -p results
 find build/ -name "*.rpm" -exec mv {} results/ \;
