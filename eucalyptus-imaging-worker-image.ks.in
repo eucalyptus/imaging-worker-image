@@ -66,11 +66,7 @@ ntp
 ntpdate
 
 #
-# Loadbalancer packages
-haproxy # Version 1.5 required
-python-boto
-load-balancer-servo
-python-httplib2
+# Imaging worker packages
 
 #
 # Package exclusions

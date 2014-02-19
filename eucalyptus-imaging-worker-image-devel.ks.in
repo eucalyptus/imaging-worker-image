@@ -80,10 +80,7 @@ system-config-firewall-base
 system-config-securitylevel-tui
 
 #
-# servo packages
-haproxy # Version 1.5 required
-python-boto # Version 2.8.0 required
-python-httplib2
+# imaging worker packages
 
 #
 # development tools
@@ -195,26 +192,12 @@ EOF
 %end
 
 #
-# Add cloud-init script that will bootstrap the load-balancer-servo package for us
+# Add cloud-init script that will bootstrap the imaging-worker
 %post --erroronfail
 mkdir -p /var/lib/cloud/scripts/per-boot
 cat > /var/lib/cloud/scripts/per-boot/bootstrap-servo.sh << EOF
 #!/bin/bash
-
-BOTO_VERSION=\$(rpm -q --queryformat="%{version}" python-boto)
-
-if [ \$? -ne 0 ] || [ "\$BOTO_VERSION" != "2.8.0" ]; then
-    # Install correct boto library since we don't have it
-    easy_install https://pypi.python.org/packages/source/b/boto/boto-2.8.0.tar.gz
-fi
-
-# Grab latest servo code
-git clone git://github.com/eucalyptus/load-balancer-servo.git /opt/load-balancer-servo
-cd /opt/load-balancer-servo
-
-# Install and run
-./install-servo.sh
-service load-balancer-servo start
+touch /root/cloud-init-done
 EOF
 chmod 755 /var/lib/cloud/scripts/per-boot/bootstrap-servo.sh
 %end
