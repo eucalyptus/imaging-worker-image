@@ -35,7 +35,7 @@ mkdir -p build/{BUILD,BUILDROOT,SRPMS,RPMS,SOURCES,SPECS}
 
 cp *.spec build/SPECS
 cp *.tgz *.ks scripts/build-eustore-tarball.sh IMAGE-LICENSE \
-	euca-install-image-worker build/SOURCES
+	euca-install-imaging-worker build/SOURCES
 
 SPECFILE=$(echo -n build/SPECS/*.spec)
 
