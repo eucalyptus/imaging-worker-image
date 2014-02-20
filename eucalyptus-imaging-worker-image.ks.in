@@ -67,6 +67,10 @@ ntpdate
 
 #
 # Imaging worker packages
+m2crypto
+python-lxml
+python-m2ext
+python-requests
 
 #
 # Package exclusions
