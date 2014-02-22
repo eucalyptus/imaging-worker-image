@@ -71,6 +71,7 @@ m2crypto
 python-lxml
 python-m2ext
 python-requests
+eucalyptus-imaging-worker
 
 #
 # Package exclusions

@@ -199,10 +199,10 @@ EOF
 # Add cloud-init script that will bootstrap the imaging-worker
 %post --erroronfail
 mkdir -p /var/lib/cloud/scripts/per-boot
-cat > /var/lib/cloud/scripts/per-boot/bootstrap-servo.sh << EOF
+cat > /var/lib/cloud/scripts/per-boot/bootstrap-imaging-worker.sh << EOF
 #!/bin/bash
 touch /root/cloud-init-done
 EOF
-chmod 755 /var/lib/cloud/scripts/per-boot/bootstrap-servo.sh
+chmod 755 /var/lib/cloud/scripts/per-boot/bootstrap-imaging-worker.sh
 %end
 
