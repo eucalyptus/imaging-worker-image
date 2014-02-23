@@ -85,6 +85,7 @@ m2crypto
 python-lxml
 python-m2ext
 python-requests
+python-boto
 
 #
 # development tools
@@ -201,6 +202,10 @@ EOF
 mkdir -p /var/lib/cloud/scripts/per-boot
 cat > /var/lib/cloud/scripts/per-boot/bootstrap-imaging-worker.sh << EOF
 #!/bin/bash
+git clone git://github.com/eucalyptus/eucalyptus-imaging-worker.git /opt/eucalyptus-imaging-worker
+cd /opt/eucalyptus-imaging-worker
+./install-worker.sh
+service eucalyptus-imaging-worker start
 touch /root/cloud-init-done
 EOF
 chmod 755 /var/lib/cloud/scripts/per-boot/bootstrap-imaging-worker.sh
