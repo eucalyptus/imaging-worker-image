@@ -218,7 +218,7 @@ class LBManager(object):
     def get_enabled(self):
         try:
             env = self._get_env()
-            cmd = ['euca-describe-properties', 'loadbalancing.loadbalancer_emi']
+            cmd = ['euca-describe-properties', 'imaging.imaging_worker_emi']
             out = subprocess.Popen(cmd, env=env,
                                    stdout=subprocess.PIPE).communicate()[0]
             imageid = out.split()[-1]
@@ -234,13 +234,13 @@ class LBManager(object):
         try:
             env = self._get_env()
             cmd = ['euca-modify-property', '-p',
-                   'loadbalancing.loadbalancer_emi={0}'.format(imageid)]
+                   'imaging.imaging_worker_emi={0}'.format(imageid)]
             subprocess.check_call(cmd, env=env)
         except (OSError, subprocess.CalledProcessError):
-            print >> sys.stderr, "Error: failed to set Load Balancer EMI."
+            print >> sys.stderr, "Error: failed to set Imaging Service EMI."
             print >> sys.stderr, "You'll have to enable it manually."
             print >> sys.stderr
-            print >> sys.stderr, "To enable load balancer support, run this command:"
+            print >> sys.stderr, "To enable imaging service support, run this command:"
             print >> sys.stderr, " ".join(cmd)
             sys.exit(1)
 
