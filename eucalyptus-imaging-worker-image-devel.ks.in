@@ -44,7 +44,7 @@ rootpw foobar
 
 #
 # Provide a little more room for development purposes
-part / --grow --fstype ext3
+part / --size 1536 --grow --fstype ext3
 
 #
 # Templated Repository Entries 
