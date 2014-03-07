@@ -87,6 +87,7 @@ python-lxml
 python-m2ext
 python-requests
 python-boto
+python-argparse
 
 #
 # development tools

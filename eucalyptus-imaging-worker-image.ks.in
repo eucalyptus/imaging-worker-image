@@ -73,6 +73,7 @@ m2crypto
 python-lxml
 python-m2ext
 python-requests
+python-argparse
 eucalyptus-imaging-worker
 
 #
