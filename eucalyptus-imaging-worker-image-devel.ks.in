@@ -88,6 +88,7 @@ python-m2ext
 python-requests
 python-boto
 python-argparse
+eucalyptus-imaging-toolkit
 
 #
 # development tools

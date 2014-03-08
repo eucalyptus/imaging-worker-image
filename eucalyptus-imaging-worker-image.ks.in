@@ -74,6 +74,7 @@ python-lxml
 python-m2ext
 python-requests
 python-argparse
+eucalyptus-imaging-toolkit
 eucalyptus-imaging-worker
 
 #
