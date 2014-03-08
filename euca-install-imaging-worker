@@ -127,7 +127,7 @@ class ImagingServiceManager(object):
                 for image in image_set:
                     imageid = image.get('imageId')
                     deregister_cmd = "euca-deregister {0}".format(imageid)
-                    deregister_output = subprocess.Popen(delete_bundle_cmd, stdout=subprocess.PIPE,
+                    deregister_output = subprocess.Popen(deregister_cmd, stdout=subprocess.PIPE,
                                                             stderr=subprocess.PIPE, shell=True)
                     deregister_output.wait()
                     location = image.get('imageLocation')
