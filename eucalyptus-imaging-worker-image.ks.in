@@ -31,7 +31,7 @@ timezone UTC
 auth --useshadow --passalgo=sha512
 selinux --disabled
 firewall --disabled
-bootloader --timeout=1  --append="xen_blkfront.sda_is_xvda=1 console=ttyS0,115200"
+bootloader --timeout=1  --append="xen_blkfront.sda_is_xvda=1 console=ttyS0"
 network --bootproto=dhcp --device=eth0 --onboot=on
 services --enabled=network,ntpd,ntpdate,load-balancer-servo
 part / --size 1536 --grow --fstype ext3
@@ -116,6 +116,18 @@ eucalyptus-imaging-worker
 %end
 
 %post --erroronfail
+#
+# Setup console
+cat > /etc/init/ttyS0.conf <<EOF
+stop on runlevel[016]
+start on runlevel[345]
+respawn
+instance /dev/ttyS0
+exec /sbin/mingetty /dev/ttyS0
+EOF
+
+initctl start ttyS0
+
 #
 # Fix sudo settings so that servo is able to start haproxy without a tty
 sed -i '/requiretty/s/^/#/' /etc/sudoers
