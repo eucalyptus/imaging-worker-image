@@ -127,7 +127,7 @@ exec /sbin/mingetty /dev/ttyS0
 EOF
 
 initctl start ttyS0
-sed -i 's/kernel\(.*\)rhgb quiet/kernel \1/' /boot/grub/menu.lst
+sed -i 's/rhgb quiet//' /boot/grub/grub.conf
 
 #
 # Fix sudo settings so that servo is able to start haproxy without a tty
