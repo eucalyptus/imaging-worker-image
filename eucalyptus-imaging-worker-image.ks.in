@@ -182,5 +182,7 @@ echo "\${META_IP}   \${META_HOSTNAME}" >> /etc/hosts
 
 exit 0
 EOF
+
+chkconfig eucalyptus-imaging-worker on
 %end
 

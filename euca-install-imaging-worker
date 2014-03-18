@@ -256,7 +256,7 @@ class ImagingServiceManager(object):
 
     def enable(self, imageid):
         env = self._get_env()
-        cmd = ['euca-modify-property', '-p', 'imaging.imaging_worker_emi={0}'.format(imageid)]
+        cmd = [ os.getenv("EUCALYPTUS", "/") + 'usr/sbin/euca-modify-property', '-p', 'imaging.imaging_worker_emi={0}'.format(imageid)]
         try:
             subprocess.check_call(cmd, env=env)
         except (OSError, subprocess.CalledProcessError):
