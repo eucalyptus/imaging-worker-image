@@ -126,7 +126,6 @@ instance /dev/ttyS0
 exec /sbin/mingetty /dev/ttyS0
 EOF
 
-initctl start ttyS0
 sed -i 's/rhgb quiet//' /boot/grub/grub.conf
 
 #
@@ -152,7 +151,7 @@ PermitRootLogin without-password
 EOF
 
 cat >> /etc/rc.d/rc.local <<EOF
-
+initctl start ttyS0
 #
 # Script content based on rc.local in starter emis
 # http://emis.eucalyptus.com
