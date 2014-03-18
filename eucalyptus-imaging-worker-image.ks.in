@@ -31,7 +31,7 @@ timezone UTC
 auth --useshadow --passalgo=sha512
 selinux --disabled
 firewall --disabled
-bootloader --timeout=1  --append xen_blkfront.sda_is_xvda=1
+bootloader --timeout=1  --append="xen_blkfront.sda_is_xvda=1 console=ttyS0"
 network --bootproto=dhcp --device=eth0 --onboot=on
 services --enabled=network,ntpd,ntpdate,load-balancer-servo
 part / --size 1536 --grow --fstype ext3
