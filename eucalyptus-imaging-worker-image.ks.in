@@ -79,6 +79,8 @@ eucalyptus-imaging-worker
 
 #
 # Package exclusions
+-plymouth
+-plymouth-system-theme
 -efibootmgr
 -acl
 -atmel-firmware
