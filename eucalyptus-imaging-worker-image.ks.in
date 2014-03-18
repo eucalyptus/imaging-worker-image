@@ -31,9 +31,9 @@ timezone UTC
 auth --useshadow --passalgo=sha512
 selinux --disabled
 firewall --disabled
-bootloader --timeout=1  --append="xen_blkfront.sda_is_xvda=1 console=ttyS0"
+bootloader --timeout=1  --append="xen_blkfront.sda_is_xvda=1 console=tty0 console=ttyS0,115200n8 serial"
 network --bootproto=dhcp --device=eth0 --onboot=on
-services --enabled=network,ntpd,ntpdate,load-balancer-servo
+services --enabled=network,ntpd,ntpdate,eucalyptus-imaging-worker
 part / --size 1536 --grow --fstype ext3
 zerombr
 rootpw --iscrypted $1$HEVobWzu$6d5IWr.r7Df15XHLFCggW/
@@ -197,6 +197,5 @@ echo "\${META_IP}   \${META_HOSTNAME}" >> /etc/hosts
 exit 0
 EOF
 
-chkconfig eucalyptus-imaging-worker on
 %end
 
