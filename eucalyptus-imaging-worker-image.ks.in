@@ -154,7 +154,6 @@ PermitRootLogin without-password
 EOF
 
 cat >> /etc/rc.d/rc.local <<EOF
-initctl start ttyS0
 #
 # Script content based on rc.local in starter emis
 # http://emis.eucalyptus.com
