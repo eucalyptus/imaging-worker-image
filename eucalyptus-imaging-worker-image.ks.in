@@ -129,7 +129,8 @@ exec /sbin/mingetty /dev/ttyS0
 EOF
 
 sed -i 's/rhgb quiet//' /boot/grub/grub.conf
-
+sed -i 's/hiddenmenu//' /boot/grub/grub.conf
+sed -i 's/splashimage.*//' /boot/grub/grub.conf
 #
 # Fix sudo settings so that servo is able to start haproxy without a tty
 sed -i '/requiretty/s/^/#/' /etc/sudoers
