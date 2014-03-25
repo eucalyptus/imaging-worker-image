@@ -63,7 +63,7 @@ class ImagingServiceManager(object):
 
     def _check_environment(self):
         env = self._get_env()
-        cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + 'usr/sbin/euca-modify-property')]
+        cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + '/usr/sbin/euca-modify-property')]
         try:
             with open(os.devnull, 'w') as nullfile:
                 subprocess.call(cmd, env=env, stdout=nullfile)
@@ -242,7 +242,7 @@ class ImagingServiceManager(object):
     def get_enabled(self):
         try:
             env = self._get_env()
-            cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + 'usr/sbin/euca-describe-properties'),
+            cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + '/usr/sbin/euca-describe-properties'),
                    'imaging.imaging_worker_emi']
             out = subprocess.Popen(cmd, env=env,
                                    stdout=subprocess.PIPE).communicate()[0]
@@ -257,7 +257,7 @@ class ImagingServiceManager(object):
 
     def enable(self, imageid):
         env = self._get_env()
-        cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + 'usr/sbin/euca-modify-property'), '-p', 'imaging.imaging_worker_emi={0}'.format(imageid)]
+        cmd = [os.path.join(os.getenv("EUCALYPTUS", "/") + '/usr/sbin/euca-modify-property'), '-p', 'imaging.imaging_worker_emi={0}'.format(imageid)]
         try:
             subprocess.check_call(cmd, env=env)
         except (OSError, subprocess.CalledProcessError):
