@@ -141,7 +141,7 @@ class ImagingServiceManager(object):
         stdout = pipe.stdout.read()
         stderr = pipe.stderr.read()
         if pipe.returncode > 0:
-            print "Error: Imaging worker image unable to decompress.\n" \
+            print "Error: Unable to install imaging worker due to:\n" \
                                  + stdout + stderr
             sys.exit(1)
         return (stdout, stderr)
